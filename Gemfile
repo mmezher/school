@@ -76,7 +76,7 @@ end
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
- # gem 'poltergeist'
+  gem 'poltergeist'
   gem 'pry-rails'
   gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
   gem 'sqlite3'
