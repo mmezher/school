@@ -15,9 +15,10 @@
       %td= answer.question_id
       %td= answer.text
       %td= link_to 'Show', answer
-      %td= link_to 'Edit', edit_answer_path(answer)
-      %td= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' }
-
+      = if can? :manage, :polls
+        %td= link_to 'Edit', edit_answer_path(answer) 
+        %td= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' }
+        
 %br
 
 = link_to 'New Answer', new_answer_path
