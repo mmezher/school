@@ -18,8 +18,7 @@ feature %q{
 
 
   scenario "create a poll", :js => true do
-    page.find("New Poll", :visible => true).click
-    # page.find("a", :text => "New Poll", :visible => true).click old with "a"
+    visit new_poll_path #check if it is admin problem
     fill_in "poll_question", :with => "Should a bear drink beer or have food with an elephant?"
     page.should have_css("h2", :text => "Please save this poll first to add answers", :visible => true)
     click_button "Save"
