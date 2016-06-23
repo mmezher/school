@@ -18,11 +18,12 @@ feature %q{
 
 
   scenario "create a poll", :js => true do
-    page.find("a", :text => 'New Poll', :visible => true).click
+    page.find("New Poll", :visible => true).click
+    # page.find("a", :text => "New Poll", :visible => true).click old with "a"
     fill_in "poll_question", :with => "Should a bear drink beer or have food with an elephant?"
     page.should have_css("h2", :text => "Please save this poll first to add answers", :visible => true)
     click_button "Save"
-    page.should have_no_css("h2", :text => "Please save this pall first to add answers", :visible => true)
+    page.should have_no_css("h2", :text => "Please save this ppll first to add answers", :visible => true)
 
     answer_text = "we should ask squirrels"
     fill_in "answer_text", :with => answer_text
