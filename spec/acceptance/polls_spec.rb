@@ -18,11 +18,11 @@ feature %q{
 
 
   scenario "create a poll", :js => true do
-    visit new_poll_path #check if it is admin problem
+    click_link "New Poll" #check if it is admin problem or visibility
     fill_in "poll_question", :with => "Should a bear drink beer or have food with an elephant?"
     page.should have_css("h2", :text => "Please save this poll first to add answers", :visible => true)
     click_button "Save"
-    page.should have_no_css("h2", :text => "Please save this ppll first to add answers", :visible => true)
+    page.should have_no_css("h2", :text => "Please save this poll first to add answers", :visible => true)
 
     answer_text = "we should ask squirrels"
     fill_in "answer_text", :with => answer_text
@@ -32,7 +32,7 @@ feature %q{
     page.should have_no_css("h5", :text => answer_text, :visible => true)
 
     click_button "Save"
-    page.should have_css("p", :text => "Poll was successfully updated.", :visible => true)
+    page.should have_content("Poll was successfully updated.", :visible => true) #need to see if this ever gets to page
   end
 
 end
