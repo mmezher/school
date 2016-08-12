@@ -7,4 +7,7 @@ module UsersHelper
     user.hide_last_name? ? first_name(user) : user.name
   end
 
+  def has_admin_rights
+	current_user.admin?
+  end
 end

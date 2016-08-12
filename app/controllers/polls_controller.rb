@@ -1,6 +1,7 @@
 class PollsController < ApplicationController
   load_and_authorize_resource only: [:new, :create, :edit, :update, 
   :destroy, :published]
+  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   # GET /polls
@@ -100,9 +101,16 @@ class PollsController < ApplicationController
   end
 
   private
+
   def poll_params
     params.require(:poll).permit(
       :question, :published
     )
   end
+
+def admin_user
+	redirect_to(root_url)
+	unless current_user.admin?
+	end
+end
 end
